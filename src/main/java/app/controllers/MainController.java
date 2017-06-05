@@ -7,12 +7,14 @@ import app.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.security.Principal;
 import java.util.Set;
 
 @Controller
@@ -36,6 +38,23 @@ public class MainController {
         User newUser = new User();
         model.addAttribute("newUser", newUser);
         return "admin/adminDashboard";
+    }
+
+    @RequestMapping(value = "/sign", method = RequestMethod.GET)
+    public String showSignPage(Principal principal) {
+
+        String userDetailsFromGoogle = ((OAuth2Authentication) principal).getUserAuthentication().getDetails().toString();
+        String[] resultDetails = userDetailsFromGoogle.split(", ");
+        String name = resultDetails[1].substring(resultDetails[1].lastIndexOf("=") + 1);
+
+        User newUser = userService.getUserByName(name);
+
+        if (newUser == null) {
+            return "signin";
+        }
+
+
+        return "redirect:/admin";
     }
 
     @RequestMapping(value = "/user")

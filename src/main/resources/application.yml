@@ -1,0 +1,26 @@
+spring:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/sys
+    username: root
+    password: 12345
+    driverClassName: com.mysql.jdbc.Driver
+
+security:
+    oauth2:
+        client:
+            clientId: 661819031357-rmr49buos1dgnjansrvogh41omcaof4p.apps.googleusercontent.com
+            clientSecret: XMSrVE6HplVURx8X4ejgA4q1
+            accessTokenUri: https://www.googleapis.com/oauth2/v3/token
+            userAuthorizationUri: https://accounts.google.com/o/oauth2/auth
+            tokenName: oauth_token
+            authenticationScheme: query
+            clientAuthenticationScheme: form
+            scope: profile
+        resource:
+            userInfoUri: https://www.googleapis.com/userinfo/v2/me
+            preferTokenInfo: false

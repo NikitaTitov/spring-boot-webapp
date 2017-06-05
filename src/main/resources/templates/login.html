@@ -9,26 +9,33 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"/>
 
     <link href="css/signin.css" rel="stylesheet"/>
+    <link href="css/auth-buttons.css" rel="stylesheet"/>
 
     <style id="holderjs-style" type="text/css"></style>
 
 </head>
 <body>
+<div class="container">
+    <form class="form-signin input-lg" role="form" action="" method="post">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <input type="text" class="form-control" placeholder="Login" required="" autofocus="" name="username"/>
+        <input type="password" class="form-control" placeholder="Password" required="" name="password"/>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <br/>
+        <a class="btn-auth btn-google" href="/sign">
+            Sign in with Google
+        </a>
+    </form>
 
-<form class="form-signin input-lg" role="form" action="" method="post">
-    <h2 class="form-signin-heading">Please sign in</h2>
-    <input type="text" class="form-control" placeholder="Login" required="" autofocus="" name="username"/>
-    <input type="password" class="form-control" placeholder="Password" required="" name="password"/>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-    <a class="btn btn-block btn-social btn-google" th:href="@{/sign}">
+
+    <!--<a class="btn btn-block btn-social btn-google" th:href="@{/sign}">
         <span class="fa fa-google"></span> Sign in with Google
-    </a>
-</form>
-
-
+    </a>-->
+</div>
 
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
 
 </body>
 </html>
